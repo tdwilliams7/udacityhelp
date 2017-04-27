@@ -37,12 +37,6 @@ class MainPage(webapp2.RequestHandler):
         else:
             self.response.out.write("cool brah")
 
-    def valid_month(month):
-        if month:
-            short_month = month[:3].lower()
-            return months_abbcs.get(short_month)
-
-    months_abbvs = dict((m[:3].lower(),m)for m in months)
     months = ['January',
           'February',
           'March',
@@ -55,6 +49,13 @@ class MainPage(webapp2.RequestHandler):
           'October',
           'November',
           'December']
+
+    months_abbvs = dict((m[:3].lower(),m)for m in months)
+
+    def valid_month(month):
+        if month:
+            short_month = month[:3].lower()
+            return months_abbcs.get(short_month)
 
     def valid_day(day):
         if day:
